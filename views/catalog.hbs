@@ -1,0 +1,1145 @@
+<html lang='en'>
+  <head>
+    <meta charset='UTF-8' />
+    <meta name='viewport' content='width=device-width, initial-scale=1.0' />
+    <title>Document</title>
+    <link rel='stylesheet' href='public/css/normalize.css' />
+    <link rel='stylesheet' href='public/css/header.css' />
+    <link rel='stylesheet' href='public/css/catalog.css' />
+    <link rel='stylesheet' href='public/css/footer.css' />
+    <link rel='stylesheet' href='public/css/style.css' />
+    <link
+      rel='stylesheet'
+      href='https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css'
+    />
+    <script
+      defer
+      src='https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js'
+    ></script>
+    <script src='public/js/header.js' defer></script>
+    <script src='public/js/catalog.js' defer></script>
+  </head>
+  <body>
+    <header class='header'>
+      <div class='header-left'>
+        <img class='header-left-logo' src='public/img/logo.svg' alt='logo' />
+        <div class='header-left-phone-inner'>
+          <img
+            class='header-left-phone-inner-logo'
+            src='public/img/phone.svg'
+            alt='phone'
+          />
+          <span>+75 123 456 789</span>
+        </div>
+      </div>
+      <!-- original menu -->
+      <div class='header-right'>
+        <a href='#' class='header-link'>Home</a>
+        <a href='#' class='header-link'>Listings</a>
+        <a href='#' class='header-link'>Blog</a>
+        <a href='#' class='header-link'>Pages</a>
+        <a href='#' class='header-link'>About Us</a>
+        <a href='#' class='header-link'>Contacts</a>
+      </div>
+      <!-- mobile menu -->
+      <div class='header-burger-inner'>
+        <div class='header-burger'>
+          <span></span>
+          <span></span>
+          <span></span>
+        </div>
+        <nav class='mobile-menu'>
+          <ul class='mobile-menu-list'>
+            <li class='mobile-menu-list-item'>
+              <a class='mobile-menu-list-item-link' href='#'>Home</a>
+            </li>
+            <li class='mobile-menu-list-item'>
+              <a class='mobile-menu-list-item-link' href='#'>Listings</a>
+            </li>
+            <li class='mobile-menu-list-item'>
+              <a class='mobile-menu-list-item-link' href='#'>Blog</a>
+            </li>
+            <li class='mobile-menu-list-item'>
+              <a class='mobile-menu-list-item-link' href='#'>Pages</a>
+            </li>
+            <li class='mobile-menu-list-item'>
+              <a class='mobile-menu-list-item-link' href='#'>About Us</a>
+            </li>
+            <li class='mobile-menu-list-item'>
+              <a class='mobile-menu-list-item-link' href='#'>Contacts</a>
+            </li>
+          </ul>
+        </nav>
+      </div>
+    </header>
+    <main class='main'>
+      <section class='top'>
+        <div class='container'>
+          <div class='top-inner'>
+            <div class='breadcrumbs'>
+              <a class='breadcrumbs-link' href='#'>Home</a>
+              <span>/</span>
+              <span class='breadcrumbs-last'>All Cars</span>
+            </div>
+            <h1 class='breadcrumbs-title'>All Cars</h1>
+          </div>
+        </div>
+      </section>
+      <section class='catalog-sort'>
+        <div class='container'>
+          <div class='catalog-sort-inner'>
+            <div class='catalog-sort-results'>Showing 1 – 12 of 15 results</div>
+            <div class='catalog-sort-filter'>
+              <img
+                class='catalog-sort-filter-logo'
+                src='public/img/filter.svg'
+                alt='filter'
+              />
+              <span>Filters</span>
+            </div>
+            <div class='catalog-sort-action'>
+              <span class='catalog-sort-title'>Sort by:</span>
+              <div class='catalog-sort-select'>
+                <span class='catalog-sort-select-current'>Default</span>
+                <div class='catalog-sort-select-dropdown'>
+                  <span
+                    data-sort='default'
+                    class='catalog-sort-select-dropdown-item'
+                  >
+                    Default
+                  </span>
+                  <span
+                    data-sort='low_to_hight'
+                    class='catalog-sort-select-dropdown-item'
+                  >
+                    Price (Low to High)
+                  </span>
+                  <span
+                    data-sort='hight_to_low'
+                    class='catalog-sort-select-dropdown-item'
+                  >
+                    Price (High to Low)
+                  </span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      <section class='catalog'>
+        <div class='container'>
+          <div class='catalog-inner'>
+            <form class='catalog-form' action='/catalog' method='GET'>
+              <div class='catalog-filter'>
+                <span class='catalog-filter-title'>Condition</span>
+                <div class='catalog-filter-items'>
+                  <div class='catalog-filter-item'>
+                    <label for='whole-cars' class='catalog-filter-item-label'>
+                      <input
+                        class='catalog-filter-item-real-checkbox'
+                        type='checkbox'
+                        name='whole-cars'
+                        id='whole-cars'
+                      />
+                      <span
+                        class='catalog-filter-item-fake-checkbox'
+                        data-for='whole-cars'
+                      ></span>
+                    </label>
+                    <span class='catalog-filter-item-info'>Whole Cars</span>
+                  </div>
+                  <div class='catalog-filter-item'>
+                    <label for='damaged-cars' class='catalog-filter-item-label'>
+                      <input
+                        class='catalog-filter-item-real-checkbox'
+                        type='checkbox'
+                        name='damaged-cars'
+                        id='damaged-cars'
+                      />
+                      <span
+                        class='catalog-filter-item-fake-checkbox'
+                        data-for='whole-cars'
+                      ></span>
+                    </label>
+                    <span class='catalog-filter-item-info'>Damaged Cars</span>
+                  </div>
+                </div>
+              </div>
+              <div class='catalog-filter'>
+                <span class='catalog-filter-title'>Make</span>
+                <div class='catalog-filter-items'>
+                  <div class='catalog-filter-item'>
+                    <label for='audi' class='catalog-filter-item-label'>
+                      <input
+                        class='catalog-filter-item-real-checkbox'
+                        type='checkbox'
+                        name='audi'
+                        id='audi'
+                      />
+                      <span
+                        class='catalog-filter-item-fake-checkbox'
+                        data-for='audi'
+                      ></span>
+                    </label>
+                    <span class='catalog-filter-item-info'>Audi</span>
+                  </div>
+                  <div class='catalog-filter-item'>
+                    <label for='aston_martin' class='catalog-filter-item-label'>
+                      <input
+                        class='catalog-filter-item-real-checkbox'
+                        type='checkbox'
+                        name='aston_martin'
+                        id='aston_martin'
+                      />
+                      <span
+                        class='catalog-filter-item-fake-checkbox'
+                        data-for='aston_martin'
+                      ></span>
+                    </label>
+                    <span class='catalog-filter-item-info'>Aston Martin</span>
+                  </div>
+                </div>
+              </div>
+              <div class='catalog-filter'>
+                <span class='catalog-filter-title'>Model</span>
+                <div class='catalog-filter-items'>
+                  <div class='catalog-filter-item'>
+                    <label for='q7' class='catalog-filter-item-label'>
+                      <input
+                        class='catalog-filter-item-real-checkbox'
+                        type='checkbox'
+                        name='q7'
+                        id='q7'
+                      />
+                      <span
+                        class='catalog-filter-item-fake-checkbox'
+                        data-for='q7'
+                      ></span>
+                    </label>
+                    <span class='catalog-filter-item-info'>Q7</span>
+                  </div>
+                  <div class='catalog-filter-item'>
+                    <label for='dbr' class='catalog-filter-item-label'>
+                      <input
+                        class='catalog-filter-item-real-checkbox'
+                        type='checkbox'
+                        name='dbr'
+                        id='dbr'
+                      />
+                      <span
+                        class='catalog-filter-item-fake-checkbox'
+                        data-for='dbr'
+                      ></span>
+                    </label>
+                    <span class='catalog-filter-item-info'>DBR</span>
+                  </div>
+                </div>
+              </div>
+              <div class='catalog-filter'>
+                <span class='catalog-filter-title'>Fuel</span>
+                <div class='catalog-filter-items'>
+                  <div class='catalog-filter-item'>
+                    <label for='petrol' class='catalog-filter-item-label'>
+                      <input
+                        class='catalog-filter-item-real-checkbox'
+                        type='checkbox'
+                        name='petrol'
+                        id='petrol'
+                      />
+                      <span
+                        class='catalog-filter-item-fake-checkbox'
+                        data-for='petrol'
+                      ></span>
+                    </label>
+                    <span class='catalog-filter-item-info'>Petrol</span>
+                  </div>
+                  <div class='catalog-filter-item'>
+                    <label for='diesel' class='catalog-filter-item-label'>
+                      <input
+                        class='catalog-filter-item-real-checkbox'
+                        type='checkbox'
+                        name='diesel'
+                        id='diesel'
+                      />
+                      <span
+                        class='catalog-filter-item-fake-checkbox'
+                        data-for='diesel'
+                      ></span>
+                    </label>
+                    <span class='catalog-filter-item-info'>Diesel</span>
+                  </div>
+                  <div class='catalog-filter-item'>
+                    <label for='electric' class='catalog-filter-item-label'>
+                      <input
+                        class='catalog-filter-item-real-checkbox'
+                        type='checkbox'
+                        name='electric'
+                        id='electric'
+                      />
+                      <span
+                        class='catalog-filter-item-fake-checkbox'
+                        data-for='whole-cars'
+                      ></span>
+                    </label>
+                    <span class='catalog-filter-item-info'>Electric</span>
+                  </div>
+                </div>
+              </div>
+              <div class='catalog-filter'>
+                <span class='catalog-filter-title'>Price</span>
+                <div class='catalog-filter-inputs'>
+                  <div class='catalog-filter-input'>
+                    <input
+                      class='catalog-filter-price-item-input'
+                      type='number'
+                      name='price_from'
+                      id='price_from'
+                      max='100000'
+                      step='1'
+                    />
+                  </div>
+                  -
+                  <div class='catalog-filter-input'>
+                    <input
+                      class='catalog-filter-price-item-input'
+                      type='number'
+                      name='price_to'
+                      id='price_to'
+                      max='100000'
+                      step='1'
+                    />
+                  </div>
+                </div>
+              </div>
+              <div class='catalog-filter-submit-inner'>
+                <button type='submit' class='catalog-filter-submit'>
+                  <img src='public/img/search.svg' alt='search' />
+                  <span>Search Cars</span>
+                </button>
+              </div>
+            </form>
+            <div class='catalog-form-mobile-backround'></div>
+            <form class='catalog-form-mobile' action='/catalog' method='GET'>
+              <div class='catalog-form-mobile-header'>
+                <button type='button' class='catalog-form-mobile-header-back'>
+                  Filters
+                </button>
+              </div>
+              <div class='catalog-form-mobile-filters'>
+                <div class='catalog-form-mobile-filter' data-name='condition'>
+                  <span class='catalog-form-mobile-filter-name'>Condition</span>
+                  <span class='catalog-form-mobile-filter-selected ellipsis'>
+                    All Cars
+                  </span>
+                </div>
+                <div class='catalog-form-mobile-filter' data-name='make'>
+                  <span class='catalog-form-mobile-filter-name'>Make</span>
+                  <span class='catalog-form-mobile-filter-selected ellipsis'>
+                    All Makes
+                  </span>
+                </div>
+                <div class='catalog-form-mobile-filter' data-name='model'>
+                  <span class='catalog-form-mobile-filter-name'>Model</span>
+                  <span class='catalog-form-mobile-filter-selected ellipsis'>
+                    All Models
+                  </span>
+                </div>
+                <div class='catalog-form-mobile-filter' data-name='price'>
+                  <span class='catalog-form-mobile-filter-name'>Price</span>
+                  <span class='catalog-form-mobile-filter-selected'>
+                    All Prices
+                  </span>
+                </div>
+              </div>
+
+              <div class='catalog-form-mobile-footer'>
+                <button type='button' class='catalog-form-mobile-footer-back'>
+                  Back
+                </button>
+              </div>
+              <!-- filter lists -->
+              <div
+                class='catalog-form-mobile-filter-list'
+                data-name='condition'
+              >
+                <div class='catalog-form-mobile-filter-list-header'>
+                  <button
+                    type='button'
+                    class='catalog-form-mobile-filter-list-header-back'
+                  >
+                    Condition
+                  </button>
+                </div>
+                <div class='catalog-form-mobile-filter-list-content'>
+                  <div class='catalog-filter-item'>
+                    <label for='m_whole-cars' class='catalog-filter-item-label'>
+                      <input
+                        class='catalog-filter-item-real-checkbox mobile'
+                        type='checkbox'
+                        name='m_whole-cars'
+                        id='m_whole-cars'
+                        data-category='condition'
+                      />
+                      <span
+                        class='catalog-filter-item-fake-checkbox'
+                        data-for='m_whole-cars'
+                      ></span>
+                    </label>
+                    <span class='catalog-filter-item-info'>Whole Cars</span>
+                  </div>
+                  <div class='catalog-filter-item'>
+                    <label
+                      for='m_damaged-cars'
+                      class='catalog-filter-item-label'
+                    >
+                      <input
+                        class='catalog-filter-item-real-checkbox mobile'
+                        type='checkbox'
+                        name='m_damaged-cars'
+                        id='m_damaged-cars'
+                        data-category='condition'
+                      />
+                      <span
+                        class='catalog-filter-item-fake-checkbox'
+                        data-for='m_damaged-cars'
+                      ></span>
+                    </label>
+                    <span class='catalog-filter-item-info'>Damaged Cars</span>
+                  </div>
+                </div>
+                <div class='catalog-form-mobile-filter-list-footer'>
+                  <button
+                    class='catalog-form-mobile-filter-list-footer-back'
+                    type='button'
+                  >
+                    Back
+                  </button>
+                  <button
+                    class='catalog-form-mobile-filter-list-footer-show'
+                    type='submit'
+                  >
+                    Show
+                  </button>
+                </div>
+              </div>
+              <div class='catalog-form-mobile-filter-list' data-name='make'>
+                <div class='catalog-form-mobile-filter-list-header'>
+                  <button
+                    type='button'
+                    class='catalog-form-mobile-filter-list-header-back'
+                  >
+                    Make
+                  </button>
+                </div>
+                <div class='catalog-form-mobile-filter-list-content'>
+                  <div class='catalog-filter-item'>
+                    <label for='m_audi' class='catalog-filter-item-label'>
+                      <input
+                        class='catalog-filter-item-real-checkbox mobile'
+                        type='checkbox'
+                        name='m_audi'
+                        id='m_audi'
+                        data-category='make'
+                      />
+                      <span
+                        class='catalog-filter-item-fake-checkbox'
+                        data-for='m_audi'
+                      ></span>
+                    </label>
+                    <span class='catalog-filter-item-info'>Audi</span>
+                  </div>
+                  <div class='catalog-filter-item'>
+                    <label
+                      for='m_aston_martin'
+                      class='catalog-filter-item-label'
+                    >
+                      <input
+                        class='catalog-filter-item-real-checkbox mobile'
+                        type='checkbox'
+                        name='m_aston_martin'
+                        id='m_aston_martin'
+                        data-category='make'
+                      />
+                      <span
+                        class='catalog-filter-item-fake-checkbox'
+                        data-for='m_aston_martin'
+                      ></span>
+                    </label>
+                    <span class='catalog-filter-item-info'>Aston Martin</span>
+                  </div>
+                </div>
+                <div class='catalog-form-mobile-filter-list-footer'>
+                  <button
+                    class='catalog-form-mobile-filter-list-footer-back'
+                    type='button'
+                  >
+                    Back
+                  </button>
+                  <button
+                    class='catalog-form-mobile-filter-list-footer-show'
+                    type='submit'
+                  >
+                    Show
+                  </button>
+                </div>
+              </div>
+              <div class='catalog-form-mobile-filter-list' data-name='model'>
+                <div class='catalog-form-mobile-filter-list-header'>
+                  <button
+                    type='button'
+                    class='catalog-form-mobile-filter-list-header-back'
+                  >
+                    Model
+                  </button>
+                </div>
+                <div class='catalog-form-mobile-filter-list-content'>
+                  <div class='catalog-filter-item'>
+                    <label for='m_q7' class='catalog-filter-item-label'>
+                      <input
+                        class='catalog-filter-item-real-checkbox mobile'
+                        type='checkbox'
+                        name='m_q7'
+                        id='m_q7'
+                        data-category='model'
+                      />
+                      <span
+                        class='catalog-filter-item-fake-checkbox'
+                        data-for='m_q7'
+                      ></span>
+                    </label>
+                    <span class='catalog-filter-item-info'>Q7</span>
+                  </div>
+                  <div class='catalog-filter-item'>
+                    <label for='m_dbr' class='catalog-filter-item-label'>
+                      <input
+                        class='catalog-filter-item-real-checkbox mobile'
+                        type='checkbox'
+                        name='m_dbr'
+                        id='m_dbr'
+                        data-category='model'
+                      />
+                      <span
+                        class='catalog-filter-item-fake-checkbox'
+                        data-for='m_dbr'
+                      ></span>
+                    </label>
+                    <span class='catalog-filter-item-info'>DBR</span>
+                  </div>
+                </div>
+                <div class='catalog-form-mobile-filter-list-footer'>
+                  <button
+                    class='catalog-form-mobile-filter-list-footer-back'
+                    type='button'
+                  >
+                    Back
+                  </button>
+                  <button
+                    class='catalog-form-mobile-filter-list-footer-show'
+                    type='submit'
+                  >
+                    Show
+                  </button>
+                </div>
+              </div>
+              <div class='catalog-form-mobile-filter-list' data-name='price'>
+                <div class='catalog-form-mobile-filter-list-header'>
+                  <button
+                    type='button'
+                    class='catalog-form-mobile-filter-list-header-back'
+                  >
+                    Price
+                  </button>
+                </div>
+                <div class='catalog-form-mobile-filter-list-content'>
+                </div>
+                <div class='catalog-form-mobile-filter-list-footer'>
+                  <button
+                    class='catalog-form-mobile-filter-list-footer-back'
+                    type='button'
+                  >
+                    Back
+                  </button>
+                  <button
+                    class='catalog-form-mobile-filter-list-footer-show'
+                    type='submit'
+                  >
+                    Show
+                  </button>
+                </div>
+              </div>
+            </form>
+            <ul class='cars-list'>
+              <li class='card-list-item'>
+                <div class='card-list-item-top'>
+                  <img src='public/img/card_item.jpg' alt='card_item' />
+                  <div class='card-list-item-top-category'>Great Price</div>
+                </div>
+                <div class='card-list-item-bot'>
+                  <div class='card-list-item-bot-row'>
+                    <span class='card-list-item-bot-row-title'>
+                      Ford Transit - 2021
+                    </span>
+                  </div>
+                  <div class='card-list-item-bot-row'>
+                    <div class='card-list-item-bot-col'>
+                      <img
+                        class='card-list-item-bot-col-logo'
+                        src='public/img/speed_logo.svg'
+                        alt='speed_logo'
+                      />
+                      <span class='card-list-item-bot-label'>2500 miles</span>
+                    </div>
+                    <div class='card-list-item-bot-col'>
+                      <img
+                        class='card-list-item-bot-col-logo'
+                        src='public/img/fuel_logo.svg'
+                        alt='fuel_logo'
+                      />
+                      <span class='card-list-item-bot-label'>Diesel</span>
+                    </div>
+                    <div class='card-list-item-bot-col'>
+                      <img
+                        class='card-list-item-bot-col-logo'
+                        src='public/img/transmission_logo.svg'
+                        alt='transmission_logo'
+                      />
+                      <span class='card-list-item-bot-label'>Manual</span>
+                    </div>
+                  </div>
+                  <div class='card-list-item-bot-row'>
+                    <div class='card-list-item-bot-col'>
+                      <span
+                        class='card-list-item-bot-label-price'
+                      >$22.000</span>
+                    </div>
+                    <a href='#' class='card-list-item-bot-link'>
+                      <span class='card-list-item-bot-link-title'>
+                        View Details
+                      </span>
+                      <img
+                        class='card-list-item-bot-link-arrow'
+                        src='public/img/link_arrow.svg'
+                        alt='link_arrow'
+                      />
+                    </a>
+                  </div>
+                </div>
+              </li>
+              <li class='card-list-item'>
+                <div class='card-list-item-top'>
+                  <img src='public/img/card_item.jpg' alt='card_item' />
+                  <div class='card-list-item-top-category'>Great Price</div>
+                </div>
+                <div class='card-list-item-bot'>
+                  <div class='card-list-item-bot-row'>
+                    <span class='card-list-item-bot-row-title'>
+                      Ford Transit - 2021
+                    </span>
+                  </div>
+                  <div class='card-list-item-bot-row'>
+                    <div class='card-list-item-bot-col'>
+                      <img
+                        class='card-list-item-bot-col-logo'
+                        src='public/img/speed_logo.svg'
+                        alt='speed_logo'
+                      />
+                      <span class='card-list-item-bot-label'>2500 miles</span>
+                    </div>
+                    <div class='card-list-item-bot-col'>
+                      <img
+                        class='card-list-item-bot-col-logo'
+                        src='public/img/fuel_logo.svg'
+                        alt='fuel_logo'
+                      />
+                      <span class='card-list-item-bot-label'>Diesel</span>
+                    </div>
+                    <div class='card-list-item-bot-col'>
+                      <img
+                        class='card-list-item-bot-col-logo'
+                        src='public/img/transmission_logo.svg'
+                        alt='transmission_logo'
+                      />
+                      <span class='card-list-item-bot-label'>Manual</span>
+                    </div>
+                  </div>
+                  <div class='card-list-item-bot-row'>
+                    <div class='card-list-item-bot-col'>
+                      <span
+                        class='card-list-item-bot-label-price'
+                      >$22.000</span>
+                    </div>
+                    <a href='#' class='card-list-item-bot-link'>
+                      <span class='card-list-item-bot-link-title'>
+                        View Details
+                      </span>
+                      <img
+                        class='card-list-item-bot-link-arrow'
+                        src='public/img/link_arrow.svg'
+                        alt='link_arrow'
+                      />
+                    </a>
+                  </div>
+                </div>
+              </li>
+              <li class='card-list-item'>
+                <div class='card-list-item-top'>
+                  <img src='public/img/card_item.jpg' alt='card_item' />
+                  <div class='card-list-item-top-category'>Great Price</div>
+                </div>
+                <div class='card-list-item-bot'>
+                  <div class='card-list-item-bot-row'>
+                    <span class='card-list-item-bot-row-title'>
+                      Ford Transit - 2021
+                    </span>
+                  </div>
+                  <div class='card-list-item-bot-row'>
+                    <div class='card-list-item-bot-col'>
+                      <img
+                        class='card-list-item-bot-col-logo'
+                        src='public/img/speed_logo.svg'
+                        alt='speed_logo'
+                      />
+                      <span class='card-list-item-bot-label'>2500 miles</span>
+                    </div>
+                    <div class='card-list-item-bot-col'>
+                      <img
+                        class='card-list-item-bot-col-logo'
+                        src='public/img/fuel_logo.svg'
+                        alt='fuel_logo'
+                      />
+                      <span class='card-list-item-bot-label'>Diesel</span>
+                    </div>
+                    <div class='card-list-item-bot-col'>
+                      <img
+                        class='card-list-item-bot-col-logo'
+                        src='public/img/transmission_logo.svg'
+                        alt='transmission_logo'
+                      />
+                      <span class='card-list-item-bot-label'>Manual</span>
+                    </div>
+                  </div>
+                  <div class='card-list-item-bot-row'>
+                    <div class='card-list-item-bot-col'>
+                      <span
+                        class='card-list-item-bot-label-price'
+                      >$22.000</span>
+                    </div>
+                    <a href='#' class='card-list-item-bot-link'>
+                      <span class='card-list-item-bot-link-title'>
+                        View Details
+                      </span>
+                      <img
+                        class='card-list-item-bot-link-arrow'
+                        src='public/img/link_arrow.svg'
+                        alt='link_arrow'
+                      />
+                    </a>
+                  </div>
+                </div>
+              </li>
+              <li class='card-list-item'>
+                <div class='card-list-item-top'>
+                  <img src='public/img/card_item.jpg' alt='card_item' />
+                  <div class='card-list-item-top-category'>Great Price</div>
+                </div>
+                <div class='card-list-item-bot'>
+                  <div class='card-list-item-bot-row'>
+                    <span class='card-list-item-bot-row-title'>
+                      Ford Transit - 2021
+                    </span>
+                  </div>
+                  <div class='card-list-item-bot-row'>
+                    <div class='card-list-item-bot-col'>
+                      <img
+                        class='card-list-item-bot-col-logo'
+                        src='public/img/speed_logo.svg'
+                        alt='speed_logo'
+                      />
+                      <span class='card-list-item-bot-label'>2500 miles</span>
+                    </div>
+                    <div class='card-list-item-bot-col'>
+                      <img
+                        class='card-list-item-bot-col-logo'
+                        src='public/img/fuel_logo.svg'
+                        alt='fuel_logo'
+                      />
+                      <span class='card-list-item-bot-label'>Diesel</span>
+                    </div>
+                    <div class='card-list-item-bot-col'>
+                      <img
+                        class='card-list-item-bot-col-logo'
+                        src='public/img/transmission_logo.svg'
+                        alt='transmission_logo'
+                      />
+                      <span class='card-list-item-bot-label'>Manual</span>
+                    </div>
+                  </div>
+                  <div class='card-list-item-bot-row'>
+                    <div class='card-list-item-bot-col'>
+                      <span
+                        class='card-list-item-bot-label-price'
+                      >$22.000</span>
+                    </div>
+                    <a href='#' class='card-list-item-bot-link'>
+                      <span class='card-list-item-bot-link-title'>
+                        View Details
+                      </span>
+                      <img
+                        class='card-list-item-bot-link-arrow'
+                        src='public/img/link_arrow.svg'
+                        alt='link_arrow'
+                      />
+                    </a>
+                  </div>
+                </div>
+              </li>
+              <li class='card-list-item'>
+                <div class='card-list-item-top'>
+                  <img src='public/img/card_item.jpg' alt='card_item' />
+                  <div class='card-list-item-top-category'>Great Price</div>
+                </div>
+                <div class='card-list-item-bot'>
+                  <div class='card-list-item-bot-row'>
+                    <span class='card-list-item-bot-row-title'>
+                      Ford Transit - 2021
+                    </span>
+                  </div>
+                  <div class='card-list-item-bot-row'>
+                    <div class='card-list-item-bot-col'>
+                      <img
+                        class='card-list-item-bot-col-logo'
+                        src='public/img/speed_logo.svg'
+                        alt='speed_logo'
+                      />
+                      <span class='card-list-item-bot-label'>2500 miles</span>
+                    </div>
+                    <div class='card-list-item-bot-col'>
+                      <img
+                        class='card-list-item-bot-col-logo'
+                        src='public/img/fuel_logo.svg'
+                        alt='fuel_logo'
+                      />
+                      <span class='card-list-item-bot-label'>Diesel</span>
+                    </div>
+                    <div class='card-list-item-bot-col'>
+                      <img
+                        class='card-list-item-bot-col-logo'
+                        src='public/img/transmission_logo.svg'
+                        alt='transmission_logo'
+                      />
+                      <span class='card-list-item-bot-label'>Manual</span>
+                    </div>
+                  </div>
+                  <div class='card-list-item-bot-row'>
+                    <div class='card-list-item-bot-col'>
+                      <span
+                        class='card-list-item-bot-label-price'
+                      >$22.000</span>
+                    </div>
+                    <a href='#' class='card-list-item-bot-link'>
+                      <span class='card-list-item-bot-link-title'>
+                        View Details
+                      </span>
+                      <img
+                        class='card-list-item-bot-link-arrow'
+                        src='public/img/link_arrow.svg'
+                        alt='link_arrow'
+                      />
+                    </a>
+                  </div>
+                </div>
+              </li>
+              <li class='card-list-item'>
+                <div class='card-list-item-top'>
+                  <img src='public/img/card_item.jpg' alt='card_item' />
+                  <div class='card-list-item-top-category'>Great Price</div>
+                </div>
+                <div class='card-list-item-bot'>
+                  <div class='card-list-item-bot-row'>
+                    <span class='card-list-item-bot-row-title'>
+                      Ford Transit - 2021
+                    </span>
+                  </div>
+                  <div class='card-list-item-bot-row'>
+                    <div class='card-list-item-bot-col'>
+                      <img
+                        class='card-list-item-bot-col-logo'
+                        src='public/img/speed_logo.svg'
+                        alt='speed_logo'
+                      />
+                      <span class='card-list-item-bot-label'>2500 miles</span>
+                    </div>
+                    <div class='card-list-item-bot-col'>
+                      <img
+                        class='card-list-item-bot-col-logo'
+                        src='public/img/fuel_logo.svg'
+                        alt='fuel_logo'
+                      />
+                      <span class='card-list-item-bot-label'>Diesel</span>
+                    </div>
+                    <div class='card-list-item-bot-col'>
+                      <img
+                        class='card-list-item-bot-col-logo'
+                        src='public/img/transmission_logo.svg'
+                        alt='transmission_logo'
+                      />
+                      <span class='card-list-item-bot-label'>Manual</span>
+                    </div>
+                  </div>
+                  <div class='card-list-item-bot-row'>
+                    <div class='card-list-item-bot-col'>
+                      <span
+                        class='card-list-item-bot-label-price'
+                      >$22.000</span>
+                    </div>
+                    <a href='#' class='card-list-item-bot-link'>
+                      <span class='card-list-item-bot-link-title'>
+                        View Details
+                      </span>
+                      <img
+                        class='card-list-item-bot-link-arrow'
+                        src='public/img/link_arrow.svg'
+                        alt='link_arrow'
+                      />
+                    </a>
+                  </div>
+                </div>
+              </li>
+              <li class='card-list-item'>
+                <div class='card-list-item-top'>
+                  <img src='public/img/card_item.jpg' alt='card_item' />
+                  <div class='card-list-item-top-category'>Great Price</div>
+                </div>
+                <div class='card-list-item-bot'>
+                  <div class='card-list-item-bot-row'>
+                    <span class='card-list-item-bot-row-title'>
+                      Ford Transit - 2021
+                    </span>
+                  </div>
+                  <div class='card-list-item-bot-row'>
+                    <div class='card-list-item-bot-col'>
+                      <img
+                        class='card-list-item-bot-col-logo'
+                        src='public/img/speed_logo.svg'
+                        alt='speed_logo'
+                      />
+                      <span class='card-list-item-bot-label'>2500 miles</span>
+                    </div>
+                    <div class='card-list-item-bot-col'>
+                      <img
+                        class='card-list-item-bot-col-logo'
+                        src='public/img/fuel_logo.svg'
+                        alt='fuel_logo'
+                      />
+                      <span class='card-list-item-bot-label'>Diesel</span>
+                    </div>
+                    <div class='card-list-item-bot-col'>
+                      <img
+                        class='card-list-item-bot-col-logo'
+                        src='public/img/transmission_logo.svg'
+                        alt='transmission_logo'
+                      />
+                      <span class='card-list-item-bot-label'>Manual</span>
+                    </div>
+                  </div>
+                  <div class='card-list-item-bot-row'>
+                    <div class='card-list-item-bot-col'>
+                      <span
+                        class='card-list-item-bot-label-price'
+                      >$22.000</span>
+                    </div>
+                    <a href='#' class='card-list-item-bot-link'>
+                      <span class='card-list-item-bot-link-title'>
+                        View Details
+                      </span>
+                      <img
+                        class='card-list-item-bot-link-arrow'
+                        src='public/img/link_arrow.svg'
+                        alt='link_arrow'
+                      />
+                    </a>
+                  </div>
+                </div>
+              </li>
+              <li class='card-list-item'>
+                <div class='card-list-item-top'>
+                  <img src='public/img/card_item.jpg' alt='card_item' />
+                  <div class='card-list-item-top-category'>Great Price</div>
+                </div>
+                <div class='card-list-item-bot'>
+                  <div class='card-list-item-bot-row'>
+                    <span class='card-list-item-bot-row-title'>
+                      Ford Transit - 2021
+                    </span>
+                  </div>
+                  <div class='card-list-item-bot-row'>
+                    <div class='card-list-item-bot-col'>
+                      <img
+                        class='card-list-item-bot-col-logo'
+                        src='public/img/speed_logo.svg'
+                        alt='speed_logo'
+                      />
+                      <span class='card-list-item-bot-label'>2500 miles</span>
+                    </div>
+                    <div class='card-list-item-bot-col'>
+                      <img
+                        class='card-list-item-bot-col-logo'
+                        src='public/img/fuel_logo.svg'
+                        alt='fuel_logo'
+                      />
+                      <span class='card-list-item-bot-label'>Diesel</span>
+                    </div>
+                    <div class='card-list-item-bot-col'>
+                      <img
+                        class='card-list-item-bot-col-logo'
+                        src='public/img/transmission_logo.svg'
+                        alt='transmission_logo'
+                      />
+                      <span class='card-list-item-bot-label'>Manual</span>
+                    </div>
+                  </div>
+                  <div class='card-list-item-bot-row'>
+                    <div class='card-list-item-bot-col'>
+                      <span
+                        class='card-list-item-bot-label-price'
+                      >$22.000</span>
+                    </div>
+                    <a href='#' class='card-list-item-bot-link'>
+                      <span class='card-list-item-bot-link-title'>
+                        View Details
+                      </span>
+                      <img
+                        class='card-list-item-bot-link-arrow'
+                        src='public/img/link_arrow.svg'
+                        alt='link_arrow'
+                      />
+                    </a>
+                  </div>
+                </div>
+              </li>
+              <li class='card-list-item'>
+                <div class='card-list-item-top'>
+                  <img src='public/img/card_item.jpg' alt='card_item' />
+                  <div class='card-list-item-top-category'>Great Price</div>
+                </div>
+                <div class='card-list-item-bot'>
+                  <div class='card-list-item-bot-row'>
+                    <span class='card-list-item-bot-row-title'>
+                      Ford Transit - 2021
+                    </span>
+                  </div>
+                  <div class='card-list-item-bot-row'>
+                    <div class='card-list-item-bot-col'>
+                      <img
+                        class='card-list-item-bot-col-logo'
+                        src='public/img/speed_logo.svg'
+                        alt='speed_logo'
+                      />
+                      <span class='card-list-item-bot-label'>2500 miles</span>
+                    </div>
+                    <div class='card-list-item-bot-col'>
+                      <img
+                        class='card-list-item-bot-col-logo'
+                        src='public/img/fuel_logo.svg'
+                        alt='fuel_logo'
+                      />
+                      <span class='card-list-item-bot-label'>Diesel</span>
+                    </div>
+                    <div class='card-list-item-bot-col'>
+                      <img
+                        class='card-list-item-bot-col-logo'
+                        src='public/img/transmission_logo.svg'
+                        alt='transmission_logo'
+                      />
+                      <span class='card-list-item-bot-label'>Manual</span>
+                    </div>
+                  </div>
+                  <div class='card-list-item-bot-row'>
+                    <div class='card-list-item-bot-col'>
+                      <span
+                        class='card-list-item-bot-label-price'
+                      >$22.000</span>
+                    </div>
+                    <a href='#' class='card-list-item-bot-link'>
+                      <span class='card-list-item-bot-link-title'>
+                        View Details
+                      </span>
+                      <img
+                        class='card-list-item-bot-link-arrow'
+                        src='public/img/link_arrow.svg'
+                        alt='link_arrow'
+                      />
+                    </a>
+                  </div>
+                </div>
+              </li>
+            </ul>
+          </div>
+          <div class='catalog-pagination'>
+            <span class='catalog-pagination-prev'></span>
+            <span class='catalog-pagination-item'>1</span>
+            <span class='catalog-pagination-item current'>2</span>
+            <span class='catalog-pagination-item'>3</span>
+            <span class='catalog-pagination-item disabled'>...</span>
+            <span class='catalog-pagination-item'>99</span>
+            <span class='catalog-pagination-next'></span>
+          </div>
+        </div>
+      </section>
+    </main>
+    <footer class='footer'>
+      <div class='container'>
+        <div class='footer-top-inner'>
+          <div class='footer-top'>
+            <div class='footer-top-col'>
+              <img class='footer-left-logo' src='public/img/logo.svg' />
+              <div class='footer-left-phone-inner'>
+                <img
+                  class='footer-left-phone-inner-logo'
+                  src='public/img/phone.svg'
+                />
+                <span>+75 123 456 789</span>
+              </div>
+            </div>
+            <div class='footer-top-col'>
+              <span class='footer-col-title'>Company</span>
+              <a class='footer-col-link' href='#'>About Us</a>
+              <a class='footer-col-link' href='#'>Blog</a>
+              <a class='footer-col-link' href='#'>Services</a>
+              <a class='footer-col-link' href='#'>FAQs</a>
+              <a class='footer-col-link' href='#'>Terms</a>
+              <a class='footer-col-link' href='#'>Contact Us</a>
+            </div>
+            <div class='footer-top-col'>
+              <span class='footer-col-title'>Top Brands</span>
+              <a class='footer-col-link' href='#'>Toyota</a>
+              <a class='footer-col-link' href='#'>Porsche</a>
+              <a class='footer-col-link' href='#'>Audi</a>
+              <a class='footer-col-link' href='#'>BMW</a>
+              <a class='footer-col-link' href='#'>Ford</a>
+              <a class='footer-col-link' href='#'>Nissan</a>
+              <a class='footer-col-link' href='#'>Peugeot</a>
+              <a class='footer-col-link' href='#'>Volkswagen</a>
+            </div>
+            <div class='footer-top-col'>
+              <span class='footer-col-title'>Vehicles Type</span>
+              <a class='footer-col-link' href='#'>Sedan</a>
+              <a class='footer-col-link' href='#'>Hatchback</a>
+              <a class='footer-col-link' href='#'>SUV</a>
+              <a class='footer-col-link' href='#'>Hybrid</a>
+              <a class='footer-col-link' href='#'>Electric</a>
+              <a class='footer-col-link' href='#'>Coupe</a>
+              <a class='footer-col-link' href='#'>Truck</a>
+              <a class='footer-col-link' href='#'>Convertible</a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class='footer-bot-inner'>
+        <div class='container'>
+          <div class='footer-bot'>© 2024 exemple.com. All rights reserved.</div>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>
