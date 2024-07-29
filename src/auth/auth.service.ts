@@ -1,7 +1,10 @@
 import { HttpException, HttpStatus, Injectable } from '@nestjs/common';
 import { ProfilesService } from '../profile/profiles.service';
 import { JwtService } from '@nestjs/jwt';
+import { ConfigService } from '@nestjs/config';
 import * as crypto from 'crypto';
+
+const EXPIRE_TIME = 20 * 1000;
 
 @Injectable()
 export class AuthService {
@@ -10,6 +13,7 @@ export class AuthService {
   constructor(
     private profilesService: ProfilesService,
     private jwtService: JwtService,
+    private configService: ConfigService,
   ) {}
 
   hashPassword(password: string, salt: string): string {
@@ -22,7 +26,7 @@ export class AuthService {
     return crypto.randomBytes(this.saltLength).toString('hex');
   }
 
-  async signUp(login: string, pwd: string): Promise<{ access_token: string }> {
+  async signUp(login: string, pwd: string): Promise<any> {
     const profile = await this.profilesService.findOneByLogin(login);
     if (profile) {
       throw new HttpException('Conflict', HttpStatus.CONFLICT);
@@ -42,11 +46,22 @@ export class AuthService {
     }
     const payload = { sub: createdProfile.id, login: createdProfile.login };
     return {
-      access_token: await this.jwtService.signAsync(payload),
+      user: createdProfile,
+      backendTokens: {
+        accessToken: await this.jwtService.signAsync(payload, {
+          expiresIn: '20s',
+          secret: this.configService.get('ACCESS_JWT_SECRET'),
+        }),
+        refreshToken: await this.jwtService.signAsync(payload, {
+          expiresIn: '7d',
+          secret: this.configService.get('REFRESH_JWT_SECRET'),
+        }),
+        expiresIn: new Date().setTime(new Date().getTime() + EXPIRE_TIME),
+      },
     };
   }
 
-  async signIn(login: string, pwd: string): Promise<{ access_token: string }> {
+  async signIn(login: string, pwd: string): Promise<any> {
     const profile = await this.profilesService.findOneByLogin(login);
     if (!profile) {
       throw new HttpException('Unauthorized', HttpStatus.UNAUTHORIZED);
@@ -58,7 +73,37 @@ export class AuthService {
     }
     const payload = { sub: profile.id, login: profile.login };
     return {
-      access_token: await this.jwtService.signAsync(payload),
+      user: profile,
+      backendTokens: {
+        accessToken: await this.jwtService.signAsync(payload, {
+          expiresIn: '20s',
+          secret: this.configService.get('ACCESS_JWT_SECRET'),
+        }),
+        refreshToken: await this.jwtService.signAsync(payload, {
+          expiresIn: '7d',
+          secret: this.configService.get('REFRESH_JWT_SECRET'),
+        }),
+        expiresIn: new Date().setTime(new Date().getTime() + EXPIRE_TIME),
+      },
+    };
+  }
+
+  async refreshToken(user: any) {
+    const payload = {
+      username: user.username,
+      sub: user.sub,
+    };
+
+    return {
+      accessToken: await this.jwtService.signAsync(payload, {
+        expiresIn: '20s',
+        secret: this.configService.get('ACCESS_JWT_SECRET'),
+      }),
+      refreshToken: await this.jwtService.signAsync(payload, {
+        expiresIn: '7d',
+        secret: this.configService.get('REFRESH_JWT_SECRET'),
+      }),
+      expiresIn: new Date().setTime(new Date().getTime() + EXPIRE_TIME),
     };
   }
 }

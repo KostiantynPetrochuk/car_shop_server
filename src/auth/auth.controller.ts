@@ -11,6 +11,7 @@ import {
 import { Throttle, SkipThrottle } from '@nestjs/throttler';
 import { FastifyRequest } from 'fastify';
 import { AuthGuard } from './auth.guard';
+import { RefreshJwtGuard } from './refresh.guard';
 import { AuthService } from './auth.service';
 import { Role } from 'src/enums/role.enum';
 import { Roles } from './roles.decorator';
@@ -43,5 +44,19 @@ export class AuthController {
   getProfile(@Req() req: FastifyRequest) {
     this.logger.log('get profile, pls', AuthController.name);
     return true;
+  }
+
+  // @Roles(Role.Admin)
+  @UseGuards(AuthGuard)
+  @Post('user')
+  getUser(@Req() req: FastifyRequest) {
+    this.logger.log('get user, pls', AuthController.name);
+    return { id: 10, name: 'Mikey', email: 'mikey@gmail.com' };
+  }
+
+  @UseGuards(RefreshJwtGuard)
+  @Post('refresh')
+  async refreshToken(@Req() req) {
+    return await this.authService.refreshToken(req.user);
   }
 }

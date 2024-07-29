@@ -16,7 +16,9 @@ import { OrdersController } from './orders/orders.controller';
 
 @Module({
   imports: [
-    ConfigModule.forRoot(),
+    ConfigModule.forRoot({
+      isGlobal: true,
+    }),
     TypeOrmModule.forRootAsync({
       imports: [ConfigModule],
       useFactory: async (configService: ConfigService) => ({
@@ -48,7 +50,13 @@ import { OrdersController } from './orders/orders.controller';
     ]),
     LoggerModule,
   ],
-  controllers: [AppController, HomeController, CarsController, CatalogController, OrdersController],
+  controllers: [
+    AppController,
+    HomeController,
+    CarsController,
+    CatalogController,
+    OrdersController,
+  ],
   providers: [
     AppService,
     {
