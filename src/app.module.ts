@@ -9,10 +9,6 @@ import { ThrottlerModule, ThrottlerGuard } from '@nestjs/throttler';
 import { APP_GUARD } from '@nestjs/core';
 import { LoggerModule } from './logger/logger.module';
 import { LoggerMiddleware } from './logger.middleware';
-import { HomeController } from './home/home.controller';
-import { CarsController } from './cars/cars.controller';
-import { CatalogController } from './catalog/catalog.controller';
-import { OrdersController } from './orders/orders.controller';
 
 @Module({
   imports: [
@@ -50,13 +46,7 @@ import { OrdersController } from './orders/orders.controller';
     ]),
     LoggerModule,
   ],
-  controllers: [
-    AppController,
-    HomeController,
-    CarsController,
-    CatalogController,
-    OrdersController,
-  ],
+  controllers: [AppController],
   providers: [
     AppService,
     {

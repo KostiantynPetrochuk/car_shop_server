@@ -17,22 +17,12 @@ async function bootstrap() {
       bufferLogs: true,
     },
   );
-  app.useStaticAssets({
-    root: join(__dirname, '..', 'public'),
-    prefix: '/public/',
-  });
-  app.setViewEngine({
-    engine: {
-      handlebars: require('handlebars'),
-    },
-    templates: join(__dirname, '..', 'views'),
-  });
   const { httpAdapter } = app.get(HttpAdapterHost);
   app.useGlobalFilters(new AllExceptionsFilter(httpAdapter));
   app.useLogger(app.get(LoggerService));
   app.enableCors();
-  // app.setGlobalPrefix('api');
+  app.setGlobalPrefix('api');
   app.useGlobalPipes(new ValidationPipe());
-  await app.listen(3000);
+  await app.listen(3001);
 }
 bootstrap();
