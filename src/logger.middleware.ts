@@ -24,7 +24,7 @@ export class LoggerMiddleware implements NestMiddleware {
             url: req.url,
             headers: { ...req.headers, authorization: '[Redacted]' },
             msg: 'incoming request',
-            body: JSON.parse(body),
+            // body: JSON.parse(body),
           },
           LoggerMiddleware.name,
         );

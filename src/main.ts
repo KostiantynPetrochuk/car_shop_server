@@ -8,6 +8,8 @@ import { AppModule } from './app.module';
 import { ValidationPipe } from '@nestjs/common';
 import { LoggerService } from './logger/logger.service';
 import { AllExceptionsFilter } from './all-exceptions.filter';
+import multiPart from '@fastify/multipart';
+
 
 async function bootstrap() {
   const app = await NestFactory.create<NestFastifyApplication>(
@@ -23,6 +25,7 @@ async function bootstrap() {
   app.enableCors();
   app.setGlobalPrefix('api');
   app.useGlobalPipes(new ValidationPipe());
+  await app.register(multiPart);
   await app.listen(3001);
 }
 bootstrap();

@@ -9,6 +9,9 @@ import { ThrottlerModule, ThrottlerGuard } from '@nestjs/throttler';
 import { APP_GUARD } from '@nestjs/core';
 import { LoggerModule } from './logger/logger.module';
 import { LoggerMiddleware } from './logger.middleware';
+import { BrandModule } from './brand/brand.module';
+import { ModelModule } from './model/model.module';
+import { CarModule } from './car/car.module';
 
 @Module({
   imports: [
@@ -31,7 +34,7 @@ import { LoggerMiddleware } from './logger.middleware';
       {
         name: 'short',
         ttl: 1000,
-        limit: 3,
+        limit: 4,
       },
       {
         name: 'medium',
@@ -45,6 +48,9 @@ import { LoggerMiddleware } from './logger.middleware';
       },
     ]),
     LoggerModule,
+    BrandModule,
+    ModelModule,
+    CarModule,
   ],
   controllers: [AppController],
   providers: [
