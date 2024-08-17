@@ -9,6 +9,9 @@ export class Brand {
   @Column()
   brand_name: string;
 
+  @Column()
+  file_name: string;
+
   @OneToMany(() => Model, (model) => model.brand)
   models: Model[];
 }
