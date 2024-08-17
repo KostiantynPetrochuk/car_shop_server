@@ -5,7 +5,7 @@ import {
   HttpException,
 } from '@nestjs/common';
 import { BaseExceptionFilter } from '@nestjs/core';
-import { FastifyRequest, FastifyReply } from 'fastify';
+import { Request, Response as ExpressResponse } from 'express';
 import { LoggerService } from './logger/logger.service';
 
 type Response = {
@@ -21,10 +21,10 @@ export class AllExceptionsFilter extends BaseExceptionFilter {
 
   catch(exception: unknown, host: ArgumentsHost) {
     const ctx = host.switchToHttp();
-    const reply = ctx.getResponse<FastifyReply>();
-    const request = ctx.getRequest<FastifyRequest>();
+    const response = ctx.getResponse<ExpressResponse>();
+    const request = ctx.getRequest<Request>();
 
-    const response: Response = {
+    const responseBody: Response = {
       statusCode: 500,
       timestamp: new Date().toISOString(),
       path: request.url,
@@ -32,20 +32,20 @@ export class AllExceptionsFilter extends BaseExceptionFilter {
     };
 
     if (exception instanceof HttpException) {
-      response.statusCode = exception.getStatus();
-      response.response = exception.getResponse();
+      responseBody.statusCode = exception.getStatus();
+      responseBody.response = exception.getResponse();
     } else {
-      response.statusCode = HttpStatus.INTERNAL_SERVER_ERROR;
-      response.response = 'Internal Server Error';
+      responseBody.statusCode = HttpStatus.INTERNAL_SERVER_ERROR;
+      responseBody.response = 'Internal Server Error';
     }
 
-    reply.status(response.statusCode).send(response);
+    response.status(responseBody.statusCode).send(responseBody);
 
     const errorMessage =
       exception instanceof Error ? exception.message : 'Unknown error';
 
     this.logger.error(
-      { type: response.response, error: errorMessage },
+      { type: responseBody.response, error: errorMessage },
       AllExceptionsFilter.name,
     );
 

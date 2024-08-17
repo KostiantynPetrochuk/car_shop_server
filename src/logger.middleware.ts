@@ -1,12 +1,13 @@
 import { randomBytes } from 'node:crypto';
 import { Injectable, NestMiddleware } from '@nestjs/common';
-import { FastifyRequest, FastifyReply } from 'fastify';
+import { Request, Response, NextFunction } from 'express';
 import { LoggerService } from './logger/logger.service';
 
 @Injectable()
 export class LoggerMiddleware implements NestMiddleware {
   private readonly logger = new LoggerService(LoggerMiddleware.name);
-  use(req: FastifyRequest['raw'], rep: FastifyReply['raw'], next: () => void) {
+
+  use(req: Request, res: Response, next: NextFunction) {
     const requestId = randomBytes(8).toString('hex');
     const startTime = new Date();
 
@@ -31,13 +32,13 @@ export class LoggerMiddleware implements NestMiddleware {
       }
     });
 
-    rep.on('finish', () => {
+    res.on('finish', () => {
       const endTime = new Date();
       const responseTime = endTime.getTime() - startTime.getTime();
       this.logger.res(
         {
           reqId: requestId,
-          statusCode: rep.statusCode,
+          statusCode: res.statusCode,
           responseTime,
           msg: 'request completed',
         },
