@@ -12,6 +12,8 @@ import { LoggerMiddleware } from './logger.middleware';
 import { BrandModule } from './brand/brand.module';
 import { ModelModule } from './model/model.module';
 import { CarModule } from './car/car.module';
+import { FeatureModule } from './feature/feature.module';
+import { CarFeatureModule } from './car-feature/car-feature.module';
 
 @Module({
   imports: [
@@ -51,6 +53,8 @@ import { CarModule } from './car/car.module';
     BrandModule,
     ModelModule,
     CarModule,
+    FeatureModule,
+    CarFeatureModule,
   ],
   controllers: [AppController],
   providers: [

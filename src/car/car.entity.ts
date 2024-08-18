@@ -1,6 +1,13 @@
-import { Entity, Column, PrimaryGeneratedColumn, ManyToOne } from 'typeorm';
+import {
+  Entity,
+  Column,
+  PrimaryGeneratedColumn,
+  ManyToOne,
+  OneToMany,
+} from 'typeorm';
 import { Brand } from '../brand/brand.entity';
 import { Model } from '../model/model.entity';
+import { CarFeature } from 'src/car-feature/car-feature.entity';
 
 @Entity()
 export class Car {
@@ -48,4 +55,7 @@ export class Car {
 
   @Column()
   color: string;
+
+  @OneToMany(() => CarFeature, (carFeature) => carFeature.car)
+  carFeatures: CarFeature[];
 }
