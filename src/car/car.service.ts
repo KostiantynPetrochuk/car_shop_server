@@ -1,6 +1,6 @@
 import { Injectable, NotFoundException } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
-import { Repository } from 'typeorm';
+import { Repository, In } from 'typeorm';
 import { Car } from './car.entity';
 import { Feature } from '../feature/feature.entity';
 import { CarFeature } from '../car-feature/car-feature.entity';
@@ -42,7 +42,9 @@ export class CarService {
       model,
     });
     const savedCar = await this.carRepository.save(car);
-    const features = await this.featureRepository.findByIds(carDto.featureIds);
+    const features = await this.featureRepository.findBy({
+      id: In(carDto.featureIds),
+    });
     if (features.length !== carDto.featureIds.length) {
       throw new NotFoundException('One or more feature IDs are invalid');
     }
@@ -52,8 +54,8 @@ export class CarService {
       carFeature.feature = feature;
       return carFeature;
     });
-    await this.carFeatureRepository.save(carFeatures);
-    return savedCar;
+    const savedCarFeatures = await this.carFeatureRepository.save(carFeatures);
+    return { ...savedCar, carFeatures };
   }
 
   async getCarById(id: number): Promise<Car> {

@@ -1,4 +1,11 @@
-import { Entity, Column, PrimaryGeneratedColumn, OneToMany } from 'typeorm';
+import {
+  Entity,
+  Column,
+  PrimaryGeneratedColumn,
+  OneToMany,
+  CreateDateColumn,
+  UpdateDateColumn,
+} from 'typeorm';
 import { CarFeature } from 'src/car-feature/car-feature.entity';
 
 @Entity('features')
@@ -14,4 +21,10 @@ export class Feature {
 
   @OneToMany(() => CarFeature, (carFeature) => carFeature.feature)
   carFeatures: CarFeature[];
+
+  @CreateDateColumn()
+  createdDate: Date;
+
+  @UpdateDateColumn()
+  updatedDate: Date;
 }

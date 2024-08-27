@@ -4,6 +4,8 @@ import {
   PrimaryGeneratedColumn,
   ManyToOne,
   OneToMany,
+  CreateDateColumn,
+  UpdateDateColumn,
 } from 'typeorm';
 import { Brand } from '../brand/brand.entity';
 import { Model } from '../model/model.entity';
@@ -56,6 +58,15 @@ export class Car {
   @Column()
   color: string;
 
-  @OneToMany(() => CarFeature, (carFeature) => carFeature.car)
+  @Column('simple-array')
+  imageNames: string[];
+
+  @CreateDateColumn()
+  createdDate: Date;
+
+  @UpdateDateColumn()
+  updatedDate: Date;
+
+  @OneToMany(() => CarFeature, (carFeature) => carFeature.car, { eager: true })
   carFeatures: CarFeature[];
 }

@@ -4,7 +4,7 @@ import { JwtService } from '@nestjs/jwt';
 import { ConfigService } from '@nestjs/config';
 import * as crypto from 'crypto';
 
-const EXPIRE_TIME = 20 * 1000;
+const EXPIRE_TIME = 900 * 1000;
 
 @Injectable()
 export class AuthService {
@@ -49,7 +49,7 @@ export class AuthService {
       user: createdProfile,
       backendTokens: {
         accessToken: await this.jwtService.signAsync(payload, {
-          expiresIn: '20s',
+          expiresIn: '15m',
           secret: this.configService.get('ACCESS_JWT_SECRET'),
         }),
         refreshToken: await this.jwtService.signAsync(payload, {
@@ -76,7 +76,7 @@ export class AuthService {
       user: profile,
       backendTokens: {
         accessToken: await this.jwtService.signAsync(payload, {
-          expiresIn: '20s',
+          expiresIn: '15m',
           secret: this.configService.get('ACCESS_JWT_SECRET'),
         }),
         refreshToken: await this.jwtService.signAsync(payload, {
@@ -96,7 +96,7 @@ export class AuthService {
 
     return {
       accessToken: await this.jwtService.signAsync(payload, {
-        expiresIn: '20s',
+        expiresIn: '15m',
         secret: this.configService.get('ACCESS_JWT_SECRET'),
       }),
       refreshToken: await this.jwtService.signAsync(payload, {

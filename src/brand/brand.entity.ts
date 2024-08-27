@@ -1,4 +1,11 @@
-import { Entity, Column, OneToMany, PrimaryGeneratedColumn } from 'typeorm';
+import {
+  Entity,
+  Column,
+  OneToMany,
+  PrimaryGeneratedColumn,
+  CreateDateColumn,
+  UpdateDateColumn,
+} from 'typeorm';
 import { Model } from '../model/model.entity';
 
 @Entity()
@@ -14,4 +21,10 @@ export class Brand {
 
   @OneToMany(() => Model, (model) => model.brand)
   models: Model[];
+
+  @CreateDateColumn()
+  createdDate: Date;
+
+  @UpdateDateColumn()
+  updatedDate: Date;
 }

@@ -1,4 +1,11 @@
-import { Entity, Column, ManyToOne, PrimaryGeneratedColumn } from 'typeorm';
+import {
+  Entity,
+  Column,
+  ManyToOne,
+  PrimaryGeneratedColumn,
+  CreateDateColumn,
+  UpdateDateColumn,
+} from 'typeorm';
 import { Brand } from '../brand/brand.entity';
 
 @Entity()
@@ -11,4 +18,10 @@ export class Model {
 
   @ManyToOne(() => Brand, (brand) => brand.models)
   brand: Brand;
+
+  @CreateDateColumn()
+  createdDate: Date;
+
+  @UpdateDateColumn()
+  updatedDate: Date;
 }

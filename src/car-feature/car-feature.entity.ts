@@ -1,4 +1,10 @@
-import { Entity, PrimaryGeneratedColumn, ManyToOne } from 'typeorm';
+import {
+  Entity,
+  PrimaryGeneratedColumn,
+  ManyToOne,
+  CreateDateColumn,
+  UpdateDateColumn,
+} from 'typeorm';
 import { Car } from '../car/car.entity';
 import { Feature } from '../feature/feature.entity';
 
@@ -14,4 +20,10 @@ export class CarFeature {
     nullable: false,
   })
   feature: Feature;
+
+  @CreateDateColumn()
+  createdDate: Date;
+
+  @UpdateDateColumn()
+  updatedDate: Date;
 }
