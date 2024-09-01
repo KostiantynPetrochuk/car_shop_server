@@ -15,10 +15,16 @@ import { extname } from 'path';
 import { Roles } from '../auth/roles.decorator';
 import { Role } from 'src/enums/role.enum';
 import { AuthGuard } from 'src/auth/auth.guard';
+import { Brand } from './brand.entity';
 
 @Controller('brand')
 export class BrandController {
   constructor(private brandService: BrandService) {}
+
+  @Get()
+  async getFeatures(): Promise<Brand[]> {
+    return this.brandService.getBrands();
+  }
 
   @Roles(Role.Admin)
   @UseGuards(AuthGuard)
